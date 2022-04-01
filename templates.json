@@ -319,11 +319,22 @@
           "categories": ["Proxy"],
           "platform": "linux",
           "logo": "https://gitlab.com/uploads/-/system/project/avatar/29318214/traefik.logo_.png",
-          "administrator_only": true,
           "repository": {
               "url": "https://github.com/Ginfred/portainer-conf",
               "stackfile": "stacks/traefik/docker-compose.yml"
           }
-      }
+      },
+      {
+        "type": 3,
+        "title": "Traefik",
+        "description": "Traefik is reverse proxy for Docker",
+        "categories": ["Proxy"],
+        "platform": "linux",
+        "logo": "https://gitlab.com/uploads/-/system/project/avatar/29318214/traefik.logo_.png",
+        "repository": {
+            "url": "https://github.com/Ginfred/portainer-conf",
+            "stackfile": "stacks/traefik/docker-compose.yml"
+        }
+    }
     ]
   }
