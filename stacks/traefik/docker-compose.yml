@@ -1,0 +1,27 @@
+version: "3.3"
+
+services:
+  traefik:
+    container_name: traefik
+    image: "traefik:latest"
+    command:
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --providers.docker
+      - --log.level=ERROR
+      - --api.dashboard=true
+      - --providers.docker.defaultRule=Host("{{ normalize .Name }}.dev.vdnh.tech")
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    network_mode: bridge
+    labels:
+      - traefik.http.routers.http-catchall.rule=hostregexp(`{host:.+}`)
+      - traefik.http.routers.http-catchall.entrypoints=web,websecure
+
+      - traefik.enable=true
+      - traefik.http.routers.traefik.entrypoints=web,websecure
+      - traefik.http.routers.traefik.rule=Host("traefik.dev.vdnh.tech")
+      - traefik.http.routers.traefik.service=api@internal
