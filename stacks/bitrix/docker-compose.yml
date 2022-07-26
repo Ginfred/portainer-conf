@@ -1,0 +1,30 @@
+version: '3.1'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: {{MYSQL_ROOT_PASSWORD}}
+    volumes:
+      - /opt/sites/dbs/{{SITE_TEMPLATE}}:/docker-entrypoint-initdb.d:ro
+  pma:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 80
+    environment:
+      - PMA_ARBITRARY=0
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD={{MYSQL_ROOT_PASSWORD}}
+  site:
+    image: bitrix/php:260722
+    restart: always
+    privileged: true
+    volumes:
+      - /opt/sites/files/{{SITE_TEMPLATE}}:/opt/site/base:ro
+    ports:
+      - 80
+networks:
+  sites:
+    external: true
