@@ -418,16 +418,12 @@
         "Bitrix"
       ],
       "platform": "linux",
-      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/portainer.png",
+      "logo": "https://upload.wikimedia.org/wikipedia/ru/5/51/1c_bitrix_logo.svg",
       "repository": {
         "url": "https://github.com/Ginfred/portainer-conf",
         "stackfile": "stacks/bitrix/docker-compose.yml"
       },
       "env": [
-        {
-          "name": "MYSQL_ROOT_PASSWORD",
-          "label": "MySQL Password"
-        },
         {
           "name": "SITE_TEMPLATE",
           "label": "Choose site",
@@ -443,7 +439,7 @@
             },
             {
               "text": "SHOP.VDNH.RU",
-              "value": "shopvdnh"
+              "value": "shopvdnhru"
             }
           ]
         }
