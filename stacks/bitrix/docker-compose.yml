@@ -4,9 +4,14 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: {{MYSQL_ROOT_PASSWORD}}
+      - TZ=Europe/Moscow
+      - MYSQL_INITDB_SKIP_TZINFO=True
+      - MYSQL_DATABASE=bitrix
+      - MYSQL_ROOT_PASSWORD=P@ssw0rd
     volumes:
       - /opt/sites/dbs/{{SITE_TEMPLATE}}:/docker-entrypoint-initdb.d:ro
+    networks:
+      - backend
   pma:
     image: phpmyadmin
     restart: always
@@ -16,15 +21,36 @@ services:
       - PMA_ARBITRARY=0
       - PMA_HOST=db
       - PMA_USER=root
-      - PMA_PASSWORD={{MYSQL_ROOT_PASSWORD}}
+      - PMA_PASSWORD=P@ssw0rd
+      - TZ=Europe/Moscow
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=frontend
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - db
   site:
     image: bitrix/php:260722
     restart: always
     privileged: true
+    environment:
+      - TZ=Europe/Moscow
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=frontend
     volumes:
       - /opt/sites/files/{{SITE_TEMPLATE}}:/opt/site/base:ro
+      - /opt/sites/configs/php.ini:/usr/local/etc/php/php.ini:ro
     ports:
       - 80
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - db
 networks:
-  sites:
+  frontend:
     external: true
+  backend: {}
