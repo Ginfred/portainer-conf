@@ -9,7 +9,7 @@ services:
       - MYSQL_DATABASE=bitrix
       - MYSQL_ROOT_PASSWORD=P@ssw0rd
     volumes:
-      - /opt/sites/dbs/{{SITE_TEMPLATE}}:/docker-entrypoint-initdb.d:ro
+      - /opt/sites/dbs/${SITE_TEMPLATE}:/docker-entrypoint-initdb.d:ro
     networks:
       - backend
   pma:
@@ -41,7 +41,7 @@ services:
       - traefik.enable=true
       - traefik.docker.network=frontend
     volumes:
-      - /opt/sites/files/{{SITE_TEMPLATE}}:/opt/site/base:ro
+      - /opt/sites/files/${SITE_TEMPLATE}:/opt/site/base:ro
       - /opt/sites/configs/php.ini:/usr/local/etc/php/php.ini:ro
     ports:
       - 80
