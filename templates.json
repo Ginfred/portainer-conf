@@ -446,12 +446,6 @@
               "value": "shopvdnhru"
             }
           ]
-        },
-        {
-          "name": "MYSQL_ROOT_PASSWORD",
-          "label": "Database root password",
-          "description": "If not set, will be: P@ssw0rd",
-          "default": "P@ssw0rd"
         }
       ]
     }
