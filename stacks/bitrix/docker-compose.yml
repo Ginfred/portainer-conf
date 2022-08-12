@@ -33,7 +33,7 @@ services:
     depends_on:
       - db
   site:
-    image: bitrix/php:260722
+    image: bitrix/php:220812
     restart: always
     privileged: true
     environment:
