@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   db:
-    image: mysql:latest
+    image: mysql:5.7.39
     restart: always
     environment:
       - TZ=Europe/Moscow
@@ -12,6 +12,7 @@ services:
       - /opt/sites/dbs/${SITE_TEMPLATE}:/docker-entrypoint-initdb.d:ro
     networks:
       - backend
+    command: ['mysqld', '--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
   pma:
     image: phpmyadmin
     restart: always
