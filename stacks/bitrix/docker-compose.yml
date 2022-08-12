@@ -7,12 +7,12 @@ services:
       - TZ=Europe/Moscow
       - MYSQL_INITDB_SKIP_TZINFO=True
       - MYSQL_DATABASE=bitrix
-      - MYSQL_ROOT_PASSWORD=P@ssw0rd
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - /opt/sites/dbs/${SITE_TEMPLATE}:/docker-entrypoint-initdb.d:ro
     networks:
       - backend
-    command: ['mysqld', '--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
+    command: mysqld --sql_mode='' --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;' --innodb_strict_mode=OFF
   pma:
     image: phpmyadmin
     restart: always
@@ -22,7 +22,7 @@ services:
       - PMA_ARBITRARY=0
       - PMA_HOST=db
       - PMA_USER=root
-      - PMA_PASSWORD=P@ssw0rd
+      - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - TZ=Europe/Moscow
     labels:
       - traefik.enable=true
@@ -38,6 +38,7 @@ services:
     privileged: true
     environment:
       - TZ=Europe/Moscow
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     labels:
       - traefik.enable=true
       - traefik.docker.network=frontend
