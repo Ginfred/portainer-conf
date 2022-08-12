@@ -429,19 +429,29 @@
           "label": "Choose site",
           "select": [
             {
-              "text": "Clear site",
-              "value": "clearbtrx",
+              "text": "NEW install",
+              "value": "installation",
               "default": true
+            },
+            {
+              "text": "CLEAN bitrix site",
+              "value": "clearbtrx",
             },
             {
               "text": "VDNH.RU",
               "value": "vdnhru"
             },
             {
-              "text": "SHOP.VDNH.RU",
+              "text": "SHOP",
               "value": "shopvdnhru"
             }
           ]
+        },
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "label": "Database root password",
+          "description": "If not set, will be: P@ssw0rd",
+          "default": "P@ssw0rd"
         }
       ]
     }
