@@ -44,6 +44,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=frontend
+      - traefik.port=80
     volumes:
       - /opt/sites/files/${SITE_TEMPLATE}:/opt/site/base:ro
       - /opt/sites/configs/php.ini:/usr/local/etc/php/php.ini:ro
