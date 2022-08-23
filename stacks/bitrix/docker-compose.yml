@@ -8,6 +8,8 @@ services:
       - MYSQL_INITDB_SKIP_TZINFO=True
       - MYSQL_DATABASE=bitrix
       - MYSQL_ROOT_PASSWORD=${MySQL_PASSWORD}
+    labels:
+      - traefik.enable=false
     volumes:
       - /opt/sites/dbs/${SITE_TEMPLATE}:/docker-entrypoint-initdb.d:ro
     networks:
@@ -33,7 +35,7 @@ services:
     depends_on:
       - db
   site:
-    image: bitrix/php:220812
+    image: bitrix/php:220823
     restart: always
     privileged: true
     environment:
@@ -45,6 +47,7 @@ services:
     volumes:
       - /opt/sites/files/${SITE_TEMPLATE}:/opt/site/base:ro
       - /opt/sites/configs/php.ini:/usr/local/etc/php/php.ini:ro
+      - /opt/sites/configs/docker-php-entrypoint:/usr/local/bin/docker-php-entrypoint:ro
     ports:
       - 80
     networks:
