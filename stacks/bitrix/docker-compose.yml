@@ -50,6 +50,7 @@ services:
       - /opt/sites/configs/docker-php-entrypoint:/usr/local/bin/docker-php-entrypoint:ro
     ports:
       - 80
+      - 22
     networks:
       - frontend
       - backend
