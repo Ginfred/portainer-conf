@@ -44,14 +44,13 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=frontend
-      - traefik.site.port=80
     volumes:
       - /opt/sites/files/${SITE_TEMPLATE}:/opt/site/base:ro
       - /opt/sites/configs/php.ini:/usr/local/etc/php/php.ini:ro
       - /opt/sites/configs/docker-php-entrypoint:/usr/local/bin/docker-php-entrypoint:ro
     ports:
       - 80
-      - 22
+      - 2222
     networks:
       - frontend
       - backend
