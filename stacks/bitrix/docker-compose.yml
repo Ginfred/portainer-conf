@@ -35,6 +35,8 @@ services:
     networks:
       - frontend
       - backend
+    extra_hosts:
+      - "bitbucket.org.vvc:10.0.140.207"
     depends_on:
       - db
 networks:
