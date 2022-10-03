@@ -21,7 +21,6 @@ services:
     privileged: true
     environment:
       - LANGUAGE=ru_RU
-      - LC_ALL=ru_RU.UTF-8
       - LANG=ru_RU.UTF-8
       - TZ=Europe/Moscow
       - MYSQL_ROOT_PASSWORD=${MySQL_PASSWORD}
