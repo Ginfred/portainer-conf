@@ -51,7 +51,8 @@
             "image": "httpd:latest",
             "ports": ["80/tcp","2222/tcp"],
             "volumes": [
-                {"container": "/usr/local/apache2/htdocs/"}
+                {"container": "/usr/local/apache2/htdocs/"},
+                {"/opt/sites/configs/httpd/httpd-foreground": "/usr/local/bin/httpd-foreground"}
             ]
         },
         {
