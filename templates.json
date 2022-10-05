@@ -3,12 +3,10 @@
     "templates": [
         {
             "type": 3,
-            "title": "Bitrix Site",
-            "description": "Test Bitrix Template",
-            "note": "The agent will be deployed globally inside your cluster and available on port 9001.",
-            "categories": [
-                "Bitrix"
-            ],
+            "title": "1C-Битрикс",
+            "description": "Шаблон 1С",
+            "note": "Пароль от учетной записи root аналогичен паролю к базе данных.",
+            "categories": ["Bitrix"],
             "platform": "linux",
             "logo": "https://upload.wikimedia.org/wikipedia/ru/5/51/1c_bitrix_logo.svg",
             "repository": {
@@ -18,33 +16,56 @@
             "env": [
                 {
                     "name": "MySQL_PASSWORD",
-                    "label": "Set MySQL password",
+                    "label": "MySQL пароль",
                     "description": "DEFAULT - P@ssw0rd",
                     "default": "P@ssw0rd"
                 },
                 {
                     "name": "SITE_TEMPLATE",
-                    "label": "Choose site",
+                    "label": "Выберите сайт",
                     "select": [
                         {
-                            "text": "NEW install",
+                            "text": "Новая установка",
                             "value": "installation",
                             "default": true
                         },
                         {
-                            "text": "CLEAN bitrix site",
-                            "value": "clearbtrx"
-                        },
-                        {
-                            "text": "VDNH.RU",
+                            "text": "Копия vdnh.ru",
                             "value": "vdnhru"
                         },
                         {
-                            "text": "SHOP",
+                            "text": "Копия shop.vdnh.ru",
                             "value": "shopvdnhru"
                         }
                     ]
                 }
+            ]
+        },
+        {
+            "type": 1,
+            "title": "HTTPD",
+            "description": "Веб-сервер на базе httpd(apache)",
+            "categories": ["Веб-сервер"],
+            "platform": "linux",
+            "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/httpd.png",
+            "image": "httpd:latest",
+            "ports": ["80/tcp","2222/tcp"],
+            "volumes": [
+                {"container": "/usr/local/apache2/htdocs/"}
+            ]
+        },
+        {
+            "type": 1,
+            "title": "NGINX",
+            "description": "Веб-сервер на базе NGINX",
+            "categories": ["Веб-сервер"],
+            "platform": "linux",
+            "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/nginx.png",
+            "image": "nginx:latest",
+            "ports": ["80/tcp","2222/tcp"],
+            "volumes": [
+                {"container": "/etc/nginx"},
+                {"container": "/usr/share/nginx/html"}
             ]
         }
     ]
