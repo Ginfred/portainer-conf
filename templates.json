@@ -51,7 +51,13 @@
             "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/httpd.png",
             "image": "httpd:latest",
             "ports": ["80/tcp","2222/tcp"],
-            "hostname": "{normalize .Name}",
+            "env": [
+                {
+                    "name":"HOSTNAME",
+                    "default":"{normalize .Name}",
+                    "preset": true
+                }
+            ]
             "volumes": [
                 {"container": "/usr/local/apache2/htdocs/"},
                 {
