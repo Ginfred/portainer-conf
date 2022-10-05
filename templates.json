@@ -53,8 +53,8 @@
             "ports": ["80/tcp","2222/tcp"],
             "env": [
                 {
-                    "name":"HOSTNAME",
-                    "default":"{normalize .Name}",
+                    "name": "HOSTNAME",
+                    "default": "{normalize .Name}",
                     "preset": true
                 }
             ],
