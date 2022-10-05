@@ -57,7 +57,7 @@
                     "default":"{normalize .Name}",
                     "preset": true
                 }
-            ]
+            ],
             "volumes": [
                 {"container": "/usr/local/apache2/htdocs/"},
                 {
