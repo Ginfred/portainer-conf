@@ -45,6 +45,7 @@
             "type": 1,
             "title": "HTTPD",
             "description": "Веб-сервер на базе httpd(apache)",
+            "note": "Пароль от учетной записи root: P@ssw0rd .",
             "categories": ["Веб-сервер"],
             "platform": "linux",
             "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/httpd.png",
