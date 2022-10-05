@@ -6,7 +6,7 @@
             "title": "1C-Битрикс",
             "description": "Сайт на основе 1С-Битрикс и имеющихся проектов на данной платформе",
             "note": "Пароль от учетной записи root аналогичен паролю к базе данных.",
-            "categories": ["Bitrix"],
+            "categories": ["1С-Битрикс"],
             "platform": "linux",
             "logo": "https://upload.wikimedia.org/wikipedia/ru/5/51/1c_bitrix_logo.svg",
             "repository": {
